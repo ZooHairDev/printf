@@ -1,39 +1,50 @@
-#ifndef HOLBERTON_H
-#define HOLBERTON_H
+#ifndef MAIN_H
+#define MAIN_H
 
-#include <stdarg.h>
 #include <unistd.h>
-#include <stdio.h>
-#include <limits.h>
 #include <stdlib.h>
+#include <stdarg.h>
+
+/* utils.c */
+int _strlen(const char *);
+int print(char *);
+char *itoa(long int, int);
+
+/* printf.c */
+int _printf(const char *, ...);
+
+/* handler.c */
+int handler(const char *, va_list);
+int percent_handler(const char *, va_list, int *);
+
+/* printers */
+int print_string(va_list);
+int print_char(va_list);
+int print_integer(va_list);
+int print_binary(va_list);
+int print_rot(va_list);
+int print_unsigned(va_list);
+int print_octal(va_list);
+int print_hexadecimal_low(va_list);
+int print_hexadecimal_upp(va_list);
+int print_pointer(va_list);
+int print_rev_string(va_list);
+
+/* _putchar.c */
+int _putchar(char);
+int buffer(char);
 
 /**
-* struct types_arguments - Struct op
-*
-* @t: The operator
-* @f: The function associated
-*/
-typedef struct types_arguments
+ * struct _format - Typedef struct
+ *
+ * @type: Format
+ * @f: The function associated
+ **/
+typedef struct _format
 {
-	char t;
-	int (*f)(va_list va);
-} types;
-int _putchar(char c);
-int _strlen(char *s);
-int print_number(va_list va);
-int binary(va_list va);
-int print_unsigned(va_list va);
-int hexa(va_list va);
-int hexa_upper(va_list va);
-int octal(va_list va);
-int print_rot(va_list va);
-char *malloc_str(char *str);
-char *rot13(char *p);
-int print_rev(va_list va);
-int hexa_special(unsigned int c);
-int stringhexa(va_list va);
-int pointer(va_list va);
-int hexa_pointer(unsigned long int c);
-int _printf(const char *format, ...);
+	char type;
+	int (*f)(va_list);
+} format;
+
 
 #endif
